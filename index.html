@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script> 
+
+        var videos = ["QYBcXnvgL60",
+         "RuLlcf-aWlM",
+     "c8reOPSa3rQ",
+"fS_idUCsifg",
+"0VKE5rePOM0",
+"RH6cRohbsYI",
+"a5_hQy8hD8A",
+"uQj-D-NXOxc"
+    ];
+
+   //  alert(window.location.href);
+     var url_string = window.location.href;
+
+     if(url_string.indexOf("?")>0){ 
+     var url = new URL(url_string);
+var c = url.searchParams.get("id");
+
+//alert(c);
+var listvideo = c.split(",").filter(n => n);
+// alert(listvideo);
+if(listvideo.length>0){
+    videos = listvideo;
+}
+     }
+
+        window.onload = function () {  
+
+             
+            var playerDiv = document.getElementById("random_player");
+            var player = document.createElement("IFRAME");
+            var randomVideoUrl = videos[Math.floor(Math.random() * videos.length)];
+            player.setAttribute('width', '100%');
+            player.setAttribute('height', '400');
+            var linkembed= "https://www.youtube.com/embed/"+randomVideoUrl+"?autoplay=1&rel=0 ";
+            player.setAttribute('src',linkembed ); 
+            player.setAttribute('frameborder', '0');
+            player.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            player.setAttribute('allowfullscreen', 'allowfullscreen'); 
+            playerDiv.appendChild(player);
+        };
+
+
+    </script> 
+<script>
+    $(document).ready(function(){
+        $.getJSON("https://lumtest.com/myip.json", function(result){  
+            var kq= "IP: "+result.ip +"--------- Com: "+result.asn.org_name + " --------- City: "+ result.geo.tz
+            $("h1").append(kq);
+            
+      
+      });
+    });
+    </script>
+<style>
+div#ytbutton { 
+    display: inline-block;
+    margin-left: 50%;
+} 
+
+</style>
+</head>
+
+<body>
+<br>
+    
+    <div id="random_player"  /> 
+
+    <br>
+<div id="ytbutton">
+    <a href="/getlink.html"> Get link</a>
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <div class="g-ytsubscribe" data-channelid="UCgKLACVMxNcijmudfwOu_9A" data-layout="full" data-count="default"></div>
+
+</div>
+<h1 id="ip">
+</h1> 
+
+<a href="https://drive.google.com/file/d/1Rw6Pfz7AwCqhZ08BSqcFYK2G8_uEt0kC/view?usp=sharing"> Get app</a>
+<br>
+  
+</body>
+ 
+
+
+
+</html>
